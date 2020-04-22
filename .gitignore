@@ -102,3 +102,7 @@ dist
 
 # TernJS port file
 .tern-port
+player/mediaplayer.css
+player/mediaplayer.js
+player/mediaplayer.swf
+player/video-js.png

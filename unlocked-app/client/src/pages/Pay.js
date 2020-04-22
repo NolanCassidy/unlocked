@@ -12,17 +12,17 @@ export default class Pay extends Component {
 
   componentDidMount() {
     // Publishable Key from Stripe Dashboard
-    const stripe =    window.Stripe('pk_test_7xmxzxXbJoooFCEtfJDQsOry00qnD6ZdV6');
+    const stripe = window.Stripe('pk_test_7xmxzxXbJoooFCEtfJDQsOry00qnD6ZdV6');
     const paymentBtn = document.getElementById('stripe-payment-btn');
     let sessionId;
     paymentBtn.addEventListener('click', () => {
       let orderData = {
       currency: 'USD',
       quantity: 1,
-      amount: 100,
+      amount: 500,
       name: 'Full Access',
       description: 'One time payment to access the whole website!',
-      image: 'https://cdn5.f-cdn.com/contestentries/972414/23284491/58c1f53a4784a_thumb900.jpg',
+      image: 'https://img.icons8.com/pastel-glyph/2x/lock.png',
       customerEmail: this.state.user.email,
       clientId: this.state.user.uid
     }

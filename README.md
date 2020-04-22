@@ -2,6 +2,8 @@
 > I created this as a starting place to allow users to pay for website content.
 [https://unlockednolan.herokuapp.com/](https://unlockednolan.herokuapp.com/)
 
+![Unlocked Demo](flow.gif)
+
 ## Features
 
 * User Authentication

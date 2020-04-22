@@ -50,8 +50,8 @@ function createOrderAndSession(req, res) {
     client_reference_id: clientId,
     customer_email: customerEmail,
     // We will add the only app page for simplicity
-    success_url: 'http://localhost:3000/paid/',
-    cancel_url: 'http://localhost:3000/free/',
+    success_url: 'https://unlockednolan.herokuapp.com/paid/',
+    cancel_url: 'https://unlockednolan.herokuapp.com/free/',
   }).then(session => {
   // Getting the session id
   var sessionId = session.id;
