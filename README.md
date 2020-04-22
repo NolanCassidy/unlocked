@@ -71,9 +71,10 @@ Follow these steps then yarn install inside the folders with package.json:
 	* firebase init functions
 		* Say no to rewriting all files but yes to npm install
 	* firebase deploy --only functions
+* Create stripe account and place the three keys throughout the code where marked.
 
 ## Meta
 
 Nolan Cassidy
 
-[https://github.com/NolanCassidy/chitchat](https://github.com/NolanCassidy/unlocked)
+[https://github.com/NolanCassidy/unlocked](https://github.com/NolanCassidy/unlocked)
