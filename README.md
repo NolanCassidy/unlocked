@@ -76,4 +76,4 @@ Follow these steps then yarn install inside the folders with package.json:
 
 Nolan Cassidy
 
-[https://github.com/NolanCassidy/chitchat](https://github.com/NolanCassidy/chitchat)
+[https://github.com/NolanCassidy/chitchat](https://github.com/NolanCassidy/unlocked)
