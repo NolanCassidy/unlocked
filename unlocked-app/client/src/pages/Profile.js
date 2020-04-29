@@ -11,12 +11,13 @@ export default class Profile extends Component {
       profile: {
         nickname: '',
       },
-      oldnickname: '',
+      curnickname: '',
       paid: false,
       submitting: false,
       readError: null,
       writeError: null,
-      loadingProfile: false
+      loadingProfile: false,
+      loaded: null
     };
     this.onSubmit = this.onSubmit.bind(this);
     this.onHandleChange = this.onHandleChange.bind(this);
@@ -24,31 +25,41 @@ export default class Profile extends Component {
   }
 
   async componentDidMount() {
-    this.setState({ readError: null, lodaingProfile: true });
+    this.setState({ readError: null, lodaingProfile: true});
     try {
       await db.ref("profile/"+this.state.user.uid).on("value", snapshot => {
-        let oldnickname = null;
+        let curnickname = null;
         //console.log(snapshot.val().nickname)
-        try{oldnickname = snapshot.val().nickname;}catch(error){db.ref("profile/"+this.state.user.uid).set({
-          uid: this.state.user.uid,
-          nickname: this.state.user.email,
-          lastupdate: Date.now(),
-        });}
-        this.setState({ oldnickname });
+        if(snapshot.exists()){
+          curnickname = snapshot.val().nickname;
+        }else{
+          db.ref("profile/"+this.state.user.uid).set({
+            email: this.state.user.email,
+            nickname: this.state.user.email.split('@')[0],
+            lastupdate: Date.now(),
+          });
+        }
+        this.setState({ curnickname });
       });
 
       await db.ref("paid/"+this.state.user.uid).on("value", snapshot => {
         let paid = false;
-        try{paid = snapshot.val().paid;}catch(error){db.ref("paid/"+this.state.user.uid).set({
-          paid: false,
-          timestamp: Date.now(),
-        });}
+        if(snapshot.exists()){
+          paid = snapshot.val().paid;
+        }else{
+          db.ref("paid/"+this.state.user.uid).set({
+            paid: false,
+            timestamp: Date.now(),
+          });
+        }
         this.setState({ paid });
+        this.setState({ loaded:true });
       });
       this.setState({ lodaingProfile: false });
     } catch (error) {
-      this.setState({ readError: error.message, lodaingProfile: false });
+      this.setState({ readError: error.message, lodaingProfile: false});
     }
+
   }
 
   async onSubmit(event) {
@@ -56,7 +67,7 @@ export default class Profile extends Component {
     this.setState({ writeError: null });
     try {
       await db.ref("profile/"+this.state.user.uid).set({
-        uid: this.state.user.uid,
+        email: this.state.user.email,
         nickname: this.state.profile.nickname,
         lastupdate: Date.now(),
       });
@@ -73,19 +84,22 @@ export default class Profile extends Component {
   }
 
   render() {
+    if (this.state.loaded===null) {
+      return(<div>{this.state.loadingProfile ? <div className="spinner-border text-success" role="status">
+        <span className="sr-only">Loading...</span>
+      </div> : ""}</div>);
+    }
     return (
       <div>
         <Header />
 
         <div className="chat-area" ref={this.myRef}>
 
-        {this.state.loadingProfile ? <div className="spinner-border text-success" role="status">
-          <span className="sr-only">Loading...</span>
-        </div> : ""}
-
         <p>Login in as: <strong className="text-info">{this.state.user.email}</strong></p>
-        <p>Nickname: <strong className="text-info">{this.state.oldnickname}</strong></p>
+        <p>Nickname: <strong className="text-info">{this.state.curnickname}</strong></p>
         <p>Paid: <strong className="text-info">{this.state.paid.toString()}</strong></p>
+
+
 
         <h4>Update</h4>
 

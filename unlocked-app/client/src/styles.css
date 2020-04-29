@@ -9,7 +9,64 @@ body {
   height: 40vmin;
 }
 
+.colored {
+  background: #c6f7ca;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  height:220px;
+  width:90%;
+  margin-left: auto;
+  margin-right: auto;
+}
 
+@media screen and (min-width: 640px) {
+  .vidsize {
+    width:640px !important; height:360px !important;
+
+
+     }
+     .compsize {
+       width:640px !important;
+
+        }
+}
+
+@media all and (max-width: 500px) {
+.vidsize {
+
+  }
+  .compsize {
+
+    } }
+
+
+
+.daybtn {
+  width: 50px;
+}
+
+.play {
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+.centered {
+  margin-top: 40px;
+  margin-bottom: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.centerme {
+  text-align: center;
+}
 
 .AppWrapper {
   width: 500px;

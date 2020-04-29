@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { auth } from "../services/firebase";
 
-export default class Pay extends Component {
+export default class PayButton extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -19,10 +19,10 @@ export default class Pay extends Component {
       let orderData = {
       currency: 'USD',
       quantity: 1,
-      amount: 500,
+      amount: 2000,
       name: 'Full Access',
-      description: 'One time payment to access the whole website!',
-      image: 'https://img.icons8.com/pastel-glyph/2x/lock.png',
+      description: 'Access Month One At Home Workouts',
+      image: 'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/320/facebook/65/flexed-biceps_emoji-modifier-fitzpatrick-type-4_1f4aa-1f3fd_1f3fd.png',
       customerEmail: this.state.user.email,
       clientId: this.state.user.uid
     }

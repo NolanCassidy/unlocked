@@ -23,7 +23,7 @@ const createOrderAndSessionApp = express();
 // Our app has to use cors
 createOrderAndSessionApp.use(cors);
 // The function that get data from front-end and create a payment session
-function createOrderAndSession(req, res) {
+async function createOrderAndSession(req, res) {
   const body = JSON.parse(req.body);
   // Creating session data from payload
   const currency = body.currency;

@@ -11,11 +11,15 @@
     "@stripe/react-stripe-js": "^1.1.2",
     "@stripe/stripe-js": "^1.4.0",
     "firebase": "7.8.0",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
+    "react": "^16.13.1",
+    "react-awesome-slider": "^4.1.0",
+    "react-dom": "^16.13.1",
+    "react-responsive-carousel": "^3.2.5",
     "react-router-dom": "5.1.2",
     "react-scripts": "3.0.1",
-    "stripe": "^8.44.0"
+    "redux": "^4.0.5",
+    "stripe": "^8.44.0",
+    "video-react": "^0.14.1"
   },
   "devDependencies": {
     "typescript": "3.3.3"
